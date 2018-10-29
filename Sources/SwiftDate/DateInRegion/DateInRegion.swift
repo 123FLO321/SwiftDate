@@ -10,6 +10,11 @@ import Foundation
 
 public struct DateInRegion: DateRepresentable, Decodable, Encodable, CustomStringConvertible, Comparable, Hashable {
 
+	/// Allows to generate an unique hash vaalue for an instance of `DateInRegion`		
+ 	public var hashValue: Int {		
+ 		return combineHashes([self.date.hashValue, self.region.hashValue])		
+	}
+
 	/// Absolute date represented. This date is not associated with any timezone or calendar
 	/// but represent the absolute number of seconds since Jan 1, 2001 at 00:00:00 UTC.
 	public internal(set) var date: Date
